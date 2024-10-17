@@ -20,7 +20,11 @@ int main() {
             }
 
             printf("请输入你的猜测：");
-            scanf("%d", &guess);
+            if (scanf("%d", &guess) != 1) {
+                printf("输入无效，请输入一个整数\n");
+                while (getchar() != '\n'); // 清空输入缓冲区
+                continue;
+            }
             attempts++;
             if (guess > secretNumber) {
                 printf("Wrong! Too high!\n");
